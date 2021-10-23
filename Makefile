@@ -2,16 +2,37 @@
 # dependency system
 # 
 # USAGE:
-# 	make build_[PROBLEM]
-# 	make run_[PROBLEM]
+# 	make build_[runnable_package]
+# 	make run_[runnable_package]
+#
+# where `[runnable_package]` is some package (directory) with a
+# `main()` function (in a `main.cpp` file).
 # 	
 # EXAMPLES:
-# 	make build_knapsack_01
-# 	make run_knapsack_01
+# 	make build_knapsack
+# 	make run_knapsack
 #
-# (utils is not buildable/runnable)
-#
-# TODO: add better documentation to this
+# Build system notes:
+# - The `run_*`, `build_*`, and `debug_*` targets are only for
+#   runnable packages. The `deps_*`, and `deps_files_*` targets are
+#   for both runnable and non-runnable packages.
+# - A simple dependency tree will be built according to the
+#   directories listed in the `_depends.txt` file of each package.
+#   This file should contain a whitespace-delimited list of package
+#   names. The `_depends.txt` file is optional.
+# - Dependency cycles will cause infinite loops (I think). (Writing
+#   logic in Makefiles is hard, okay?)
+# - Compiled object files will be located in `BUILDDIR`. Target
+#   executable files will be located in `TARGETDIR`.
+# - When including a package, the `main.cpp` file will be excluded.
+#   Thus, sample driver code for a package may be placed in `main.cpp`
+#   for a library package without worrying about redefinition of
+#   `main()` when another package includes it. (Note that this doesn't
+#   restrict one from putting `main()` functions in other files, but
+#   this will cause problems when importing said package.)
+# - Besides `main.cpp`, all `.cpp` files in a package will be included
+#   when the package is included. (Import/build is per-package, not
+#   per-file.)
 
 BUILDDIR=_build
 TARGETDIR=_target
@@ -37,13 +58,10 @@ get-deps-files=$(patsubst %.cpp,$(BUILDDIR)/%.o,\
 		$(call get-deps-rec,$(1)),\
 		$(shell ls $(dep)/*.cpp|grep -v main.cpp$)))
 
-$(BUILDDIR):
-	mkdir -p $(BUILDDIR)
-
 .PRECIOUS: $(BUILDDIR)/%.o
 $(BUILDDIR)/%.o: %.cpp
 	mkdir -p $(dir $@)
-	$(CXX) -c $(CXXFLAGS) $(^:$(BUILDDIR)=) -o $@
+	$(CXX) -c $(CXXFLAGS) $^ -o $@
 
 # for .PRECIOUS see: https://stackoverflow.com/a/56424855
 # for .SECONDEXPANSION see: https://stackoverflow.com/a/46878386
@@ -58,7 +76,7 @@ $(TARGETDIR)/%: $$(call get-deps-files,%)
 deps_%:
 	@echo "$(call get-deps,$(@:deps_%=%))"
 
-.PHONY: deps_%
+.PHONY: deps_files_%
 deps_files_%:
 	@echo "$(call get-deps-files,$(@:deps_files_%=%))"
 
