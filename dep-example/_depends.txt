@@ -1,0 +1,2 @@
+sample-deps/sample-dep1
+sample-deps/sample-dep2
