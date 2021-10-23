@@ -59,6 +59,8 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Union-find (union_find, mst)
 
 ##### Algorithms
+- Number theory
+  - Fibonacci (fib)
 - DP
   - Knapsack problem (knapsack)
     - Knapsack 0/1
@@ -67,8 +69,10 @@ Relevant packages are listed in parentheses. (This list may not be completely up
 - Graph
   - MST (mst)
     - Kruskal's algorithm
+- Permutations
+  - Of non-overlapping bitmaps (lc_1239)
 - Misc.
-  - Count set bits (lc_0762)
+  - Count set bits (lc_0762, lc_1239)
     - Kernighan's algorithm
 
 [makefile]: ./Makefile
