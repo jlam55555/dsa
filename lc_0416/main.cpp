@@ -1,5 +1,5 @@
-#include "utils/common.hpp"
-#include "knapsack/knapsack.hpp"
+#include "../utils/common.hpp"
+#include "../knapsack/knapsack.hpp"
 
 bool canPartition(vector<int>& nums) {
         int sum = 0;
@@ -11,7 +11,9 @@ bool canPartition(vector<int>& nums) {
                 return false;
         }
 
-        return subset_sum(nums, sum/2);
+        // return subset_sum_knapsack(nums, sum>>1);
+        // return subset_sum_bitwise(nums, sum>>1);
+        return subset_sum_bitwise_opt(nums, sum>>1);
 }
 
 int main(void) {

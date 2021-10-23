@@ -3,8 +3,10 @@
 #define DSA_COMMON_HPP
 
 #include <algorithm>
+#include <bitset>
 #include <cassert>
 #include <climits>
+#include <cstring>
 #include <iostream>
 #include <list>
 #include <map>
