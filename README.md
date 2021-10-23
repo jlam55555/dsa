@@ -52,23 +52,23 @@ For a package to be runnable, we have to add a `main()` driver function in the `
 
 ### Data structures and algorithms
 
-(This list may not be completely up to date.)
+Relevant packages are listed in parentheses. (This list may not be completely up to date.)
 
 ##### Data structures
-- Graph
-  - Union-find
+- Graph (graph)
+  - Union-find (union_find, mst)
 
 ##### Algorithms
 - DP
-  - Knapsack problem
+  - Knapsack problem (knapsack)
     - Knapsack 0/1
-      - Subset Sum
+      - Subset Sum (lc_0416)
         - Bitwise subset sum
 - Graph
-  - MST
+  - MST (mst)
     - Kruskal's algorithm
 - Misc.
-  - Count set bits
+  - Count set bits (lc_0762)
     - Kernighan's algorithm
 
 [makefile]: ./Makefile
