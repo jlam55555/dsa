@@ -5,23 +5,23 @@
 int knapsack_01(::vector<int>& items, ::vector<int>& costs, int cost) {
         // i = item, c = cost
         int len_items = items.size(),
-                **dp = (int **) alloc_2d(len_items+1, cost+1, sizeof(int), true),
+                **dp = (int **) alloc_2d(2, cost+1, sizeof(int), true),
                 i, c, ans;
         
         // knapsack 0/1 algorithm
+        // optimize in space by alternating between two rows
         for (i = 0; i < len_items; ++i) {
                 for (c = 1; c <= cost; ++c) {
-                        if (costs[i] <= c) {
-                                dp[i+1][c] = ::max(items[i] + dp[i][c-costs[i]], dp[i][c]);
-                        } else {
-                                dp[i+1][c] = dp[i][c];
-                        }
+                        dp[(i+1)%2][c] = ::max(dp[i%2][c],
+                                             costs[i] <= c
+                                             ? items[i] + dp[i%2][c-costs[i]]
+                                             : INT_MIN);
                 }
         }
-        ans = dp[len_items][cost];
+        ans = dp[i%2][cost];
 
         // cleanup
-        free_2d((void **) dp, len_items+1);
+        free_2d((void **) dp, 2);
         
         return ans;
 }
