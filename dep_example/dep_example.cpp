@@ -1,5 +1,5 @@
 #include "utils/common.hpp"
-#include "sample-deps/sample-deps.hpp"
+#include "sample_deps/sample_deps.hpp"
 
 int main(void) {
         // x, y declared in utils/sample_deps.hpp
