@@ -62,6 +62,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
 - Number theory
   - Fibonacci (fib)
 - DP
+  - Fixed size memory (fib, lc_0746)
   - Knapsack problem (knapsack)
     - Knapsack 0/1
       - Subset Sum (lc_0416)
