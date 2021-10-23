@@ -48,4 +48,27 @@ Most source files will include `utils/common.hpp` for common headers and a `usin
 
 For a package to be runnable, we have to add a `main()` driver function in the `main.cpp` file of that directory. Otherwise, it cannot be run directly but it can be depended on from other packages.
 
+---
+
+### Data structures and algorithms
+
+(This list may not be completely up to date.)
+
+##### Data structures
+- Graph
+  - Union-find
+
+##### Algorithms
+- DP
+  - Knapsack problem
+    - Knapsack 0/1
+      - Subset Sum
+        - Bitwise subset sum
+- Graph
+  - MST
+    - Kruskal's algorithm
+- Misc.
+  - Count set bits
+    - Kernighan's algorithm
+
 [makefile]: ./Makefile
