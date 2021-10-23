@@ -2,41 +2,78 @@
 # dependency system
 # 
 # USAGE:
-# 	make build-[PROBLEM]
-# 	make run-[PROBLEM]
+# 	make build_[PROBLEM]
+# 	make run_[PROBLEM]
 # 	
 # EXAMPLES:
-# 	make build-knapsack-01
-# 	make run-knapsack-01
+# 	make build_knapsack_01
+# 	make run_knapsack_01
 #
 # (utils is not buildable/runnable)
 #
-# TODO: partial compilation to *.o files first; desirable but
-#       not necessary
+# TODO: add better documentation to this
 
-BUILDDIR=_target
-CFLAGS=-I.
+BUILDDIR=_build
+TARGETDIR=_target
+CXX=g++
+CXXFLAGS= -I.
+CXXFLAGS_DEBUG= -DDEBUG -g
 
 # helper function to get list of dependencies from the
-# PROJECT/_depends.txt files
-get-deps=$(patsubst %,%.cpp,$(shell cat $(1)/_depends.txt))
+# `PROJECT/_depends.txt` files recursively; to check if `_depends.txt`
+# exists use `wildcard`; see: https://stackoverflow.com/a/20566812
+get-deps-rec2=\
+	$(if $(wildcard $(1)),\
+	$(shell cat $(1))\
+	$(foreach dep,$(shell cat $(1)),$(call get-deps-rec,$(dep))),)
+get-deps-rec=$(call get-deps-rec2,$(1)/_depends.txt)
+get-deps=$(1) $(call get-deps-rec,$(1))
+
+# get all `.cpp` files from dependencies, except any `main.cpp` files
+# outside of package
+get-deps-files=$(patsubst %.cpp,$(BUILDDIR)/%.o,\
+	$(shell ls $(1)/*.cpp) \
+	$(foreach dep,\
+		$(call get-deps-rec,$(1)),\
+		$(shell ls $(dep)/*.cpp|grep -v main.cpp$)))
 
 $(BUILDDIR):
 	mkdir -p $(BUILDDIR)
 
+.PRECIOUS: $(BUILDDIR)/%.o
+$(BUILDDIR)/%.o: %.cpp
+	mkdir -p $(dir $@)
+	$(CXX) -c $(CXXFLAGS) $(^:$(BUILDDIR)=) -o $@
+
 # for .PRECIOUS see: https://stackoverflow.com/a/56424855
 # for .SECONDEXPANSION see: https://stackoverflow.com/a/46878386
-.PRECIOUS: $(BUILDDIR)/%
-.SECONDEXPANSION: $(BUILDDIR)/%
-$(BUILDDIR)/%: $(BUILDDIR) %/*.cpp $$(call get-deps,%)
-	g++ $(CFLAGS) $(^:$(BUILDDIR)=) -o $@
+.PRECIOUS: $(TARGETDIR)/%
+.SECONDEXPANSION: $(TARGETDIR)/%
+$(TARGETDIR)/%: $$(call get-deps-files,%)
+	mkdir -p $(TARGETDIR)
+	$(CXX) $(CXXFLAGS) $^ -o $@
 
-build-%: $(BUILDDIR)/%
+# print dependencies of package
+.PHONY: deps_%
+deps_%:
+	@echo "$(call get-deps,$(@:deps_%=%))"
+
+.PHONY: deps_%
+deps_files_%:
+	@echo "$(call get-deps-files,$(@:deps_files_%=%))"
+
+# build package
+build_%: $(TARGETDIR)/%
 	@ # alias for building the target file directly
 
-run-%: build-%
-	$(BUILDDIR)/$(@:run-%=%)
+# build and run package
+run_%: build_%
+	$(TARGETDIR)/$(@:run_%=%)
+
+debug_%: CXXFLAGS+=$(CXXFLAGS_DEBUG)
+debug_%: run_%
+	@ # alias for run, but adds extra debugging flags
 
 .PHONY: clean
 clean:
-	rm -rf $(BUILDDIR)
+	rm -rf $(BUILDDIR) $(TARGETDIR)

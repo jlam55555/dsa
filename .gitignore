@@ -1,5 +1,6 @@
 # temporary files
 *~
 
-# build output
+# build and target output
+_build/
 _target/
