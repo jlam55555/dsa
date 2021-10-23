@@ -2,17 +2,20 @@
 # dependency system
 # 
 # USAGE:
-# 	make build_[runnable_package]
-# 	make run_[runnable_package]
+#	# build and run package
+# 	make .[runnable_package]
 #
 # where `[runnable_package]` is some package (directory) with a
 # `main()` function (in a `main.cpp` file).
 # 	
 # EXAMPLES:
-# 	make build_knapsack
-# 	make run_knapsack
+# 	make .knapsack
 #
 # Build system notes:
+# - The `.*` target is a convenient (albeit more cryptic) alias for
+#   the `run_*` target. The `debug_*` target is an alias for the
+#   `run_*` target but uses target-specific variable values to
+#   specify debug flags.
 # - The `run_*`, `build_*`, and `debug_*` targets are only for
 #   runnable packages. The `deps_*`, and `deps_files_*` targets are
 #   for both runnable and non-runnable packages.
@@ -87,6 +90,9 @@ build_%: $(TARGETDIR)/%
 # build and run package
 run_%: build_%
 	$(TARGETDIR)/$(@:run_%=%)
+
+.%: run_%
+	@ # convenient alias for run
 
 debug_%: CXXFLAGS+=$(CXXFLAGS_DEBUG)
 debug_%: run_%
