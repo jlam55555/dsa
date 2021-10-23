@@ -1,15 +1,17 @@
 #ifndef DSA_UNION_FIND_HPP
 #define DSA_UNION_FIND_HPP
 
-class unionfind {
+#include "../utils/common.hpp"
+
+class union_find {
 private:
-        int groupCount = 0;
-        ::vector<int> arr;
+        int group_count;
+        ::vector<int> arr, group_sizes;
         
 public:
-        unionfind(int size);
+        union_find(int size);
         int find(int e);
-        void unio(int e1, int e2);
+        bool unio(int e1, int e2);
 
         int size(void);
         int groups(void);

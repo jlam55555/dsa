@@ -12,6 +12,10 @@
 # 	make .knapsack
 #
 # Build system notes:
+# - Since we set the compile flag `-I.`, either relative imports
+#   (relative to the file) or absolute imports (relative to the
+#   search path, i.e., this DSA directory) are allowed. However, IDE
+#   support is best with relative paths, so they are preferred.
 # - The `.*` target is a convenient (albeit more cryptic) alias for
 #   the `run_*` target. The `debug_*` target is an alias for the
 #   `run_*` target but uses target-specific variable values to
