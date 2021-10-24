@@ -67,6 +67,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
     - Knapsack 0/1
       - Subset Sum (lc_0416)
         - Bitwise subset sum
+- Binary search (binary_search)
 - Graph
   - MST (mst)
     - Kruskal's algorithm
