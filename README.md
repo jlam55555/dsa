@@ -50,9 +50,9 @@ For a package to be runnable, we have to add a `main()` driver function in the `
 
 ##### Package naming convention
 
-For well-known data structures or algorithms with a canonical name, the package can be named the same as the data structure/algorithm. For variants of algorithms or mixed algorithms, the package name can be the problem source and number, e.g., `lc_1239` for LeetCode #1239 or `pe_0015` for Project Euler #15.
+For well-known data structures or algorithms with a canonical name (e.g., `knapsack`), the package can be named the same as the data structure/algorithm. For variants of algorithms or mixed algorithms, the package name can be the problem source and number, e.g., `lc_1239` for LeetCode #1239 or `pe_0015` for Project Euler #15.
 
-If a LeetCode problem (or other numbered problem) contains a well-known data structure/algorithm, the package may be named with either the canonical data structure/algorithm name or the numbered LeetCode style, or the package may be split into two packages. There is no set rule.
+If a LeetCode problem (or other numbered problem) contains a well-known data structure/algorithm, the package may be named with either the canonical data structure/algorithm name or the numbered LeetCode style, or the package may be split into two packages. For example, LeetCode #15 is the famous "three sum" problem -- it can be a package `three_sum`, `lc_0015`, or split into two packages. There is no set rule.
 
 The name style convention is `snake_case`.
 
@@ -64,28 +64,28 @@ Relevant packages are listed in parentheses. (This list may not be completely up
 
 ##### Data structures
 - Graph (graph)
-  - Union-find (union_find, mst)
+  - Union-find ([union_find](./union_find), [mst](./mst))
 
 ##### Algorithms
 - Basic data structures
-  - Hashmap (hashmap)
+  - Hashmap ([hashmap](./hashmap))
 - Number theory
-  - Fibonacci (fib)
+  - Fibonacci ([fib](./fib))
 - DP
-  - Fixed size memory (fib, lc_0746)
-  - Knapsack problem (knapsack)
+  - Fixed size memory ([fib](./fib), [lc_0746](./lc_0746))
+  - Knapsack problem ([knapsack](./knapsack))
     - Knapsack 0/1
-      - Subset Sum (lc_0416)
+      - Subset Sum ([lc_0416](./lc_0416))
         - Bitwise subset sum
-- Binary search (binary_search)
+- Binary search ([binary_search](./binary_search))
 - Graph
-  - MST (mst)
+  - MST ([mst](./mst))
     - Kruskal's algorithm
 - Permutations
-  - Of non-overlapping bitmaps (lc_1239)
+  - Of non-overlapping bitmaps ([lc_1239](./lc_1239))
 - Misc.
-  - Three sum (three_sum)
-  - Count set bits (lc_0762, lc_1239)
+  - Three sum ([three_sum](./three_sum))
+  - Count set bits ([lc_0762](./lc_0762), [lc_1239](./lc_1239))
     - Kernighan's algorithm
 
 [makefile]: ./Makefile
