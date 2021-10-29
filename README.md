@@ -48,6 +48,14 @@ Most source files will include `utils/common.hpp` for common headers and a `usin
 
 For a package to be runnable, we have to add a `main()` driver function in the `main.cpp` file of that directory. Otherwise, it cannot be run directly but it can be depended on from other packages.
 
+##### Package naming convention
+
+For well-known data structures or algorithms with a canonical name, the package can be named the same as the data structure/algorithm. For variants of algorithms or mixed algorithms, the package name can be the problem source and number, e.g., `lc_1239` for LeetCode #1239 or `pe_0015` for Project Euler #15.
+
+If a LeetCode problem (or other numbered problem) contains a well-known data structure/algorithm, the package may be named with either the canonical data structure/algorithm name or the numbered LeetCode style, or the package may be split into two packages. There is no set rule.
+
+The name style convention is `snake_case`.
+
 ---
 
 ### Data structures and algorithms
@@ -59,6 +67,8 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Union-find (union_find, mst)
 
 ##### Algorithms
+- Basic data structures
+  - Hashmap (hashmap)
 - Number theory
   - Fibonacci (fib)
 - DP
@@ -74,6 +84,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
 - Permutations
   - Of non-overlapping bitmaps (lc_1239)
 - Misc.
+  - Three sum (three_sum)
   - Count set bits (lc_0762, lc_1239)
     - Kernighan's algorithm
 
