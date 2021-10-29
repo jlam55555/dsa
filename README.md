@@ -85,6 +85,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Of non-overlapping bitmaps ([lc_1239](./lc_1239))
 - Misc.
   - Three sum ([three_sum](./three_sum))
+  - Maximum subarray sum ([kadane](./kadane))
   - Count set bits ([lc_0762](./lc_0762), [lc_1239](./lc_1239))
     - Kernighan's algorithm
 

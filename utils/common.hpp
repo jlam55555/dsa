@@ -14,6 +14,10 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+
 using namespace std;
+
+typedef vector<int> vi;
+typedef vector<vector<int>> vvi;
 
 #endif
