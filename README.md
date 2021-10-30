@@ -77,12 +77,14 @@ Relevant packages are listed in parentheses. (This list may not be completely up
     - Knapsack 0/1
       - Subset Sum ([lc_0416](./lc_0416))
         - Bitwise subset sum
-- Binary search ([binary_search](./binary_search))
 - Graph
   - MST ([mst](./mst))
     - Kruskal's algorithm
 - Permutations
   - Of non-overlapping bitmaps ([lc_1239](./lc_1239))
+- Two pointers
+  - Containers with most water ([lc_0011](./lc_0011))
+  - Binary search ([binary_search](./binary_search))
 - Misc.
   - Three sum ([three_sum](./three_sum))
   - Maximum subarray sum ([kadane](./kadane))
