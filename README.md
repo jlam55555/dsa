@@ -1,5 +1,5 @@
 # dsa
-Playground and working examples for data structures and algorithms
+Playground and working examples for data structures and algorithms (in C++)
 
 (e.g., canned algorithms for LeetCode contests)
 
@@ -58,7 +58,7 @@ The name style convention is `snake_case`.
 
 ##### Code style
 
-The code is automatically formatted using Emacs' C indenting using the `linux` style. To set this style in Emacs (the default style is `gnu`), use the following Elisp:
+The code is automatically formatted using Emacs' C/C++ indenting using the `linux` style. To set this style in Emacs (the default style is `gnu`), use the following Elisp:
 ```lisp
 (setq c-default-style "linux")
 ```
@@ -93,6 +93,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
 - Two pointers
   - Containers with most water ([lc_0011](./lc_0011))
   - Binary search ([binary_search](./binary_search))
+  - Sliding window ([lc_0203](./lc_0209))
 - Misc.
   - Three sum ([three_sum](./three_sum))
   - Maximum subarray sum ([kadane](./kadane))
