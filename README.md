@@ -56,6 +56,13 @@ If a LeetCode problem (or other numbered problem) contains a well-known data str
 
 The name style convention is `snake_case`.
 
+##### Code style
+
+The code is automatically formatted using Emacs' C indenting using the `linux` style. To set this style in Emacs (the default style is `gnu`), use the following Elisp:
+```lisp
+(setq c-default-style "linux")
+```
+
 ---
 
 ### Data structures and algorithms
