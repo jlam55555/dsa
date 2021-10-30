@@ -77,6 +77,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
     - Knapsack 0/1
       - Subset Sum ([lc_0416](./lc_0416))
         - Bitwise subset sum
+  - Break string into words ([lc_0139](./lc_0139))
 - Graph
   - MST ([mst](./mst))
     - Kruskal's algorithm
