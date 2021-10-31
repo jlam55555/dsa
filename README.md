@@ -85,6 +85,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
       - Subset Sum ([lc_0416](./lc_0416))
         - Bitwise subset sum
   - Break string into words ([lc_0139](./lc_0139))
+  - Edit distance ([lc_2060](./lc_2060))
 - Graph
   - MST ([mst](./mst))
     - Kruskal's algorithm
@@ -93,6 +94,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
 - Two pointers
   - Containers with most water ([lc_0011](./lc_0011))
   - Binary search ([binary_search](./binary_search))
+    - Patience sort ([longest_increasing_subsequence](./longest_increasing_subsequence))
   - Sliding window ([lc_0203](./lc_0209), [lc_0438](./lc_0438))
 - Misc.
   - Three sum ([three_sum](./three_sum))
@@ -101,5 +103,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
     - Kernighan's algorithm
   - Left/right cumulative sums
     - Trapped water ([lc_0042](./lc_0042))
+  - Patience sort
+    - Longest increasing subsequence ([longest_increasing_subsequence](./longest_increasing_subsequence))
 
 [makefile]: ./Makefile
