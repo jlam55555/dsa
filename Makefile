@@ -3,13 +3,31 @@
 # 
 # USAGE:
 #	# build and run package
-# 	make .[runnable_package]
+# 	make .PKG
 #
-# where `[runnable_package]` is some package (directory) with a
+# where `PKG` is some package (directory) with a
 # `main()` function (in a `main.cpp` file).
-# 	
+#
 # EXAMPLES:
 # 	make .knapsack
+#
+# All targets:
+# - run_PKG		compile/run PKG
+# - .PKG		alias for compile/run PKG
+# - deps_PKG		get dependencies (packages) for PKG
+# - deps_files_PKG	get dependencies (files) for PKG
+# - build_PKG		compile PKG
+# - debug_PKG		compile with debug flags and run PKG
+# - run_all		compile/run all executable packages; useful
+# 			to check that all dependencies of a library
+#			package	still work correctly
+# - build_all		build all packages; useful to check that
+# 			the Makefile/build system still works and
+# 			all dependencies are specified correctly
+# - clean		remove built files
+#
+# Individual `*.obj` files and the target executables may also
+# be built manually (but why?).
 #
 # Build system notes:
 # - Since we set the compile flag `-I.`, either relative imports
@@ -27,6 +45,9 @@
 #   directories listed in the `_depends.txt` file of each package.
 #   This file should contain a whitespace-delimited list of package
 #   names. The `_depends.txt` file is optional.
+# - The `utils` package is implicitly depended on by all packages
+#   except itself. Thus, a `_depends.txt` file is not necessary if
+#   `utils` is the only dependency.
 # - Dependency cycles will cause infinite loops (I think). (Writing
 #   logic in Makefiles is hard, okay?)
 # - Compiled object files will be located in `BUILDDIR`. Target
@@ -47,6 +68,9 @@ CXX=g++
 CXXFLAGS= -I.
 CXXFLAGS_DEBUG= -DDEBUG -g
 
+# get all executable packages for the `run_all` target
+EXE_PKGS=$(patsubst %/,%,$(dir $(shell ls */main.cpp)))
+
 # helper function to get list of dependencies from the
 # `PROJECT/_depends.txt` files recursively; to check if `_depends.txt`
 # exists use `wildcard`; see: https://stackoverflow.com/a/20566812
@@ -55,14 +79,14 @@ get-deps-rec2=\
 	$(shell cat $(1))\
 	$(foreach dep,$(shell cat $(1)),$(call get-deps-rec,$(dep))),)
 get-deps-rec=$(call get-deps-rec2,$(1)/_depends.txt)
-get-deps=$(1) $(call get-deps-rec,$(1))
+get-deps=$(1) $(call get-deps-rec,$(1)) utils
 
 # get all `.cpp` files from dependencies, except any `main.cpp` files
 # outside of package
 get-deps-files=$(patsubst %.cpp,$(BUILDDIR)/%.o,\
 	$(shell ls $(1)/*.cpp) \
 	$(foreach dep,\
-		$(call get-deps-rec,$(1)),\
+		$(call get-deps,$(1)),\
 		$(shell ls $(dep)/*.cpp|grep -v main.cpp$)))
 
 .PRECIOUS: $(BUILDDIR)/%.o
@@ -101,6 +125,12 @@ run_%: build_%
 debug_%: CXXFLAGS+=$(CXXFLAGS_DEBUG)
 debug_%: run_%
 	@ # alias for run, but adds extra debugging flags
+
+run_all: $(patsubst %,run_%,$(EXE_PKGS))
+	@ # run all executable targets
+
+build_all: $(patsubst %,build_%,$(EXE_PKGS))
+	@ # build all executable targets
 
 .PHONY: clean
 clean:
