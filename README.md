@@ -79,7 +79,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
 - Number theory
   - Fibonacci ([fib](./fib))
 - DP
-  - Fixed size memory ([fib](./fib), [lc_0746](./lc_0746))
+  - Fixed size dp ([fib](./fib), [lc_0746](./lc_0746), [lc_0091](./lc_0091))
   - Knapsack problem ([knapsack](./knapsack))
     - Knapsack 0/1
       - Subset Sum ([lc_0416](./lc_0416))
