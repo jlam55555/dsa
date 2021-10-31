@@ -3,6 +3,14 @@
 
 // lc_0300
 
+// this algorithm is also known as the "patience sort", because it
+// provides a general O(n log n) sorting algorithm (using a heap-based
+// K-way merge), and solves the "Patience" game optimally
+
+// also the possibility for returning the longest increasing subsequence
+// by maintaining backpointers; the following only stores the length
+// of the longest increasing subsequence
+
 // patience sort for longest increasing subsequence
 int lengthOfLIS(vector<int>& nums) {
         vector<int> dp{};
