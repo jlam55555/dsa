@@ -78,6 +78,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Hashmap ([hashmap](./hashmap))
 - Number theory
   - Fibonacci ([fib](./fib))
+  - Pascal row ([lc_0119](./lc_0119))
 - DP
   - Fixed size dp ([fib](./fib), [lc_0746](./lc_0746), [lc_0091](./lc_0091))
   - Knapsack problem ([knapsack](./knapsack))
