@@ -95,7 +95,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Of non-overlapping bitmaps ([lc_1239](./lc_1239))
 - Two pointers
   - Containers with most water ([lc_0011](./lc_0011))
-  - Binary search ([binary_search](./binary_search))
+  - Binary search ([binary_search](./binary_search), [lc_2064](./lc_2064))
     - Patience sort ([longest_increasing_subsequence](./longest_increasing_subsequence))
   - Sliding window ([lc_0203](./lc_0209), [lc_0438](./lc_0438))
 - Misc.
