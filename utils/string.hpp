@@ -6,5 +6,6 @@
 #include "./common.hpp"
 
 bool starts_with(string s, string prefix);
+vector<string> string_split(string& s, char delim);
 
 #endif

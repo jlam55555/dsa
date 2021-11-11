@@ -14,3 +14,14 @@ bool starts_with(string s, string prefix) {
         }
         return true;
 }
+
+vector<string> string_split(string& s, char delim) {
+        int prev = 0, pos;
+        vector<string> res{};
+        while ((pos = s.find(delim, prev)) != -1) {
+                res.push_back(s.substr(prev, pos-prev));
+                prev = pos+1;   // skip past the delimiter
+        }
+        res.push_back(s.substr(prev, pos-prev));
+        return res;
+}
