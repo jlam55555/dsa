@@ -87,6 +87,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
         - Bitwise subset sum
   - Break string into words ([lc_0139](./lc_0139))
   - Edit distance ([lc_2060](./lc_2060))
+  - Maximum palindrome subsequence ([lc_0516](./lc_0516))
 - Graph
   - MST ([mst](./mst))
     - Kruskal's algorithm
