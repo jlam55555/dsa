@@ -20,3 +20,28 @@ graph::graph(::vector<edge> edges, bool directed) : directed{directed} {
 int graph::size(void) {
         return nodes.size();
 }
+
+graph graph::transpose() {
+        vector<edge> new_edges{};
+
+        // reverse all edges
+        for (auto n : nodes) {
+                for (auto e : n.adj) {
+                        new_edges.push_back({e.to, e.from, e.weight});
+                }
+        }
+        
+        return graph{new_edges};
+}
+
+void graph::print() {
+        cout << "graph &" << this << endl;
+        for (int i = 0; i < nodes.size(); ++i) {
+                cout << i << ": ";
+                for (auto e : nodes[i].adj) {
+                        cout << e.to << ":" << e.weight << " ";
+                }
+                cout << endl;
+        }
+        cout << endl;
+}

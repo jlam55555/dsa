@@ -90,6 +90,8 @@ Relevant packages are listed in parentheses. (This list may not be completely up
 - Graph
   - MST ([mst](./mst))
     - Kruskal's algorithm
+  - SCC
+    - Kosaraju's algorithm ([kosaraju](./kosaraju))
 - Permutations
   - Power set ([power_set](./power_set))
   - Of non-overlapping bitmaps ([lc_1239](./lc_1239))

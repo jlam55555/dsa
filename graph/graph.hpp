@@ -19,8 +19,11 @@ public:
                         return weight < e.weight;
                 }
         };
+        
         struct node {
                 int val;
+                // probably don't need to store from in the
+                // edge, but we'll leave it for now
                 ::vector<edge> adj;
         };
 
@@ -31,6 +34,12 @@ public:
 
         graph(::vector<edge> edges, bool directed = true);
         int size(void);
+
+        // transpose all edges
+        graph transpose();
+
+        // print adjacency lists
+        void print();
 };
 
 #endif
