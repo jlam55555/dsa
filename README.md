@@ -93,6 +93,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
     - Left/right cumulative sums ([lc_1074](./lc_1074))
       - Trapped water ([lc_0042](./lc_0042))
   - Reduce 2D problem to 1D array problem ([lc_0085](./lc_0085), [lc_1074](./lc_1074))
+  - Shortest path moving forwards and backwards ([lc_0818](./lc_0818))
 - Graph
   - MST ([mst](./mst))
     - Kruskal's algorithm
