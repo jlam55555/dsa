@@ -88,7 +88,8 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Break string into words ([lc_0139](./lc_0139))
   - Edit distance ([lc_2060](./lc_2060))
   - Maximum palindrome subsequence ([lc_0516](./lc_0516))
-  - Cumulative smaller/larger from left/right ([lc_0084](./lc_0084), [lc_0085](./lc_0085))
+  - Cumulative smaller/larger from left/right ([lc_0084](./lc_0084), [lc_0085](./lc_0085), [lc_1074](./lc_1074))
+  - Reduce 2D problem to 1D array problem ([lc_0085](./lc_0085), [lc_1074](./lc_1074))
 - Graph
   - MST ([mst](./mst))
     - Kruskal's algorithm
