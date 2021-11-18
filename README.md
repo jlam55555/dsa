@@ -88,7 +88,10 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Break string into words ([lc_0139](./lc_0139))
   - Edit distance ([lc_2060](./lc_2060))
   - Maximum palindrome subsequence ([lc_0516](./lc_0516))
-  - Cumulative smaller/larger from left/right ([lc_0084](./lc_0084), [lc_0085](./lc_0085), [lc_1074](./lc_1074))
+  - Cumulative from left/right
+    - Smaller left/right ([lc_0084](./lc_0084), [lc_0085](./lc_0085))
+    - Left/right cumulative sums ([lc_1074](./lc_1074))
+      - Trapped water ([lc_0042](./lc_0042))
   - Reduce 2D problem to 1D array problem ([lc_0085](./lc_0085), [lc_1074](./lc_1074))
 - Graph
   - MST ([mst](./mst))
@@ -100,7 +103,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Of non-overlapping bitmaps ([lc_1239](./lc_1239))
 - Two pointers
   - Containers with most water ([lc_0011](./lc_0011))
-  - Binary search ([binary_search](./binary_search), [lc_2064](./lc_2064))
+  - Binary search ([binary_search](./binary_search), [lc_2064](./lc_2064), [lc_0668](./lc_0668))
     - Patience sort ([longest_increasing_subsequence](./longest_increasing_subsequence))
   - Sliding window ([lc_0203](./lc_0209), [lc_0438](./lc_0438))
 - Misc.
@@ -108,8 +111,6 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Maximum subarray sum ([kadane](./kadane))
   - Count set bits ([lc_0762](./lc_0762), [lc_1239](./lc_1239))
     - Kernighan's algorithm
-  - Left/right cumulative sums
-    - Trapped water ([lc_0042](./lc_0042))
   - Patience sort
     - Longest increasing subsequence ([longest_increasing_subsequence](./longest_increasing_subsequence))
   - Helper functions (in utils)
