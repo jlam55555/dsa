@@ -107,11 +107,13 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Binary search ([binary_search](./binary_search), [lc_2064](./lc_2064), [lc_0668](./lc_0668))
     - Patience sort ([longest_increasing_subsequence](./longest_increasing_subsequence))
   - Sliding window ([lc_0203](./lc_0209), [lc_0438](./lc_0438))
+- Bit manipulation
+  - Count set bits ([lc_0762](./lc_0762), [lc_1239](./lc_1239))
+    - Kernighan's algorithm
+  - Counting bit permutations (general bitset usage/bit manip) ([lc_1461](./lc_1461))
 - Misc.
   - Three sum ([three_sum](./three_sum))
   - Maximum subarray sum ([kadane](./kadane))
-  - Count set bits ([lc_0762](./lc_0762), [lc_1239](./lc_1239))
-    - Kernighan's algorithm
   - Patience sort
     - Longest increasing subsequence ([longest_increasing_subsequence](./longest_increasing_subsequence))
   - Helper functions (in utils)
