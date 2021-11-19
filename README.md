@@ -99,6 +99,8 @@ Relevant packages are listed in parentheses. (This list may not be completely up
     - Kruskal's algorithm
   - SCC
     - Kosaraju's algorithm ([kosaraju](./kosaraju))
+  - Backtracking/DFS
+    - Wildcard matching ([lc_0044](./lc_0044))
 - Permutations
   - Power set ([power_set](./power_set))
   - Of non-overlapping bitmaps ([lc_1239](./lc_1239))
