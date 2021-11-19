@@ -95,6 +95,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
       - Trapped water ([lc_0042](./lc_0042))
   - Reduce 2D problem to 1D array problem ([lc_0085](./lc_0085), [lc_1074](./lc_1074))
   - Shortest path moving forwards and backwards ([lc_0818](./lc_0818))
+  - Maximum length of repeated subarray ([lc_0718](./lc_0718))
 - Graph
   - MST ([mst](./mst))
     - Kruskal's algorithm
