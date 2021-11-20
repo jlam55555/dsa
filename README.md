@@ -110,6 +110,7 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Binary search ([binary_search](./binary_search), [lc_2064](./lc_2064), [lc_0668](./lc_0668))
     - Patience sort ([longest_increasing_subsequence](./longest_increasing_subsequence))
   - Sliding window ([lc_0203](./lc_0209), [lc_0438](./lc_0438))
+    - Window character historgram ([lc_0076](./lc_0076))
 - Bit manipulation
   - Count set bits ([lc_0762](./lc_0762), [lc_1239](./lc_1239))
     - Kernighan's algorithm

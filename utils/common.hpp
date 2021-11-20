@@ -21,6 +21,13 @@
 using namespace std;
 
 typedef vector<int> vi;
-typedef vector<vector<int>> vvi;
+typedef vector<vi> vvi;
+typedef vector<char> vc;
+typedef vector<vc> vvc;
+
+// to put at the end of test cases
+#define DONE\
+        cout << "Done." << endl;\
+        return 0;
 
 #endif
