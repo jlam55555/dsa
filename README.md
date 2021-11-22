@@ -96,6 +96,8 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Reduce 2D problem to 1D array problem ([lc_0085](./lc_0085), [lc_1074](./lc_1074))
   - Shortest path moving forwards and backwards ([lc_0818](./lc_0818))
   - Maximum length of repeated subarray ([lc_0718](./lc_0718))
+- Binary tree ([tree](./tree))
+  - Construct from inorder and postorder ([lc_0106](./lc_0106))
 - Graph
   - MST ([mst](./mst))
     - Kruskal's algorithm

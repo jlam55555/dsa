@@ -30,4 +30,7 @@ typedef vector<vc> vvc;
         cout << "Done." << endl;\
         return 0;
 
+// why is this not standard
+#define assert_eq(a, b) (a==b)
+
 #endif
