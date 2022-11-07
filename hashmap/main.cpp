@@ -1,18 +1,19 @@
 #include "./hashmap.hpp"
 
+#include "../utils/common.hpp"
+
 // a.k.a. lc_0706: design a hashmap
 int main() {
-        hashmap hm{};
-        
-        hm.put(1, 1);
-        hm.put(2, 2);
-        assert(hm.get(1) == 1);
-        assert(hm.get(3) == -1);
-        hm.put(2, 1);
-        assert(hm.get(2) == 1);
-        hm.remove(2);
-        assert(hm.get(2) == -1);
+  dsa::hashmap::HashMap hm{};
 
-        cout << "Done." << endl;
-        return 0;
+  hm.Put(1, 1);
+  hm.Put(2, 2);
+  assert_eq(hm.Get(1).value(), 1);
+  assert(!hm.Get(3));
+  hm.Put(2, 1);
+  assert_eq(hm.Get(2).value(), 1);
+  hm.Remove(2);
+  assert(!hm.Get(2));
+
+  return 0;
 }

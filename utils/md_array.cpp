@@ -1,28 +1,26 @@
-#include <cstdlib>
-#include <cstring>
 #include "md_array.hpp"
 
-void **alloc_2d(int m, int n, ::size_t size, bool zero) {
-        int i, j;
-        void **arr;
+#include <cstdlib>
+#include <cstring>
 
-        arr = (void **) ::malloc(m * sizeof(void *));
-        for (i = 0; i < m; ++i) {
-                arr[i] = ::malloc(n * size);
+namespace dsa::utils {
 
-                if (zero) {
-                        ::memset(arr[i], 0, n*size);
-                }
-        }
-
-        return arr;
+void **Alloc2D(int m, int n, std::size_t elem_size, bool zero) {
+  auto arr = static_cast<void **>(std::malloc(m * sizeof(void *)));
+  for (auto i = 0; i < m; ++i) {
+    arr[i] = std::malloc(n * elem_size);
+    if (zero) {
+      std::memset(arr[i], 0, n * elem_size);
+    }
+  }
+  return arr;
 }
 
-void free_2d(void** dp, int m) {
-        int i;
-        
-        for (i = 0; i < m; ++i) {
-                free(dp[i]);
-        }
-        free(dp);
+void Free2D(void **dp, int m) {
+  for (auto i = 0; i < m; ++i) {
+    std::free(dp[i]);
+  }
+  std::free(dp);
 }
+
+} // namespace dsa::utils

@@ -1,9 +1,17 @@
-#ifndef DSA_MST_HPP
-#define DSA_MST_HPP
+#ifndef DSA_MST_MST_HPP
+#define DSA_MST_MST_HPP
 
-#include "../utils/common.hpp"
+#include <vector>
+
 #include "../graph/graph.hpp"
+#include "../utils/common.hpp"
 
-int kruskal(::vector<graph::edge>& edges);
+namespace dsa::mst {
 
-#endif
+// Performs Kruskal's algorithm for finding a minimum spanning tree.
+// Note: modifies `edges`.
+int Kruskal(std::vector<graph::Edge> &edges);
+
+} // namespace dsa::mst
+
+#endif // DSA_MST_MST_HPP

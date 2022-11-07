@@ -1,18 +1,21 @@
-#include "../utils/common.hpp"
 #include "binary_search.hpp"
 
-int main(void) {
-        vector<int>
-                v1{8,9,1,2,3,4,5,6,7},
-                v2{1,2,3,4,5,6,7,8,9};
+#include <vector>
 
-        assert(binary_search(v2, 6) == 5);
-        assert(binary_search(v2, 2) == 1);
-        assert(binary_search(v2, 32) == -1);
+#include "../utils/common.hpp"
 
-        assert(find_rotation(v1) == 2);
-        assert(find_rotation(v2) == 0);
+using dsa::binary_search::BinarySearch;
+using dsa::binary_search::FindRotation;
 
-        cout << "Done." << endl;
-        return 0;
+int main() {
+  std::vector<int> v1{8, 9, 1, 2, 3, 4, 5, 6, 7}, v2{1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+  assert_eq(BinarySearch(v2, 6).value(), 5);
+  assert_eq(BinarySearch(v2, 2).value(), 1);
+  assert(!BinarySearch(v2, 32));
+
+  assert_eq(FindRotation(v1), 2);
+  assert_eq(FindRotation(v2), 0);
+
+  return 0;
 }

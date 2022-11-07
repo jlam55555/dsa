@@ -1,81 +1,104 @@
 #include "binary_search.hpp"
 
-// general standard binary search: binary_search_gt(arr, target)
-// returns first j such that arr[j] >= target; (note: not equality):
-// it is possible that j == target.size(), in which case target
-// is greater than every element
-int binary_search_gt(vector<int>& arr, int target) {
-        int l = 0, r = arr.size(), m;
-        // loop invariant: target index is in [arr[l],arr[r]] (inclusive range)
-        // at end of loop, l == r
-        while (l < r) {
-                m = (l + r) / 2;
-                // invariant broken; search larger numbers (exclusive);
-                // result in (m, r]
-                if (arr[m] < target) {
-                        l = m+1;
-                }
-                // invariant held; result in [l,m]
-                else {
-                        r = m;
-                }
-        }
-        return l;
+#include <optional>
+#include <vector>
+
+namespace dsa::binary_search {
+
+int BinarySearchGe(const std::vector<int> &arr, int target) {
+  // We try to find the insertion index `i`, the first index such that
+  // `arr[i] >= target`.
+  //
+  // This is a two-pointer/window approach. The loop invariant we hold is
+  // that `i` lies in the (inclusive) range [l, r]. We choose a test point
+  // in the middle, `m`, and modify the window to maintain the invariant.
+  // At the end, `l == r`, and thus `i == l == r`.
+  int l{0}, r(arr.size());
+  while (l < r) {
+    auto m{(l + r) / 2};
+    // Invariant is broken; search larger numbers (exclusive);
+    // `i` lies in (m, r].
+    if (arr[m] < target) {
+      l = m + 1;
+    }
+    // Invariant is held; search smaller numbers (inclusive);
+    // `i` lies in [l, m].
+    else {
+      r = m;
+    }
+  }
+  return l;
 }
 
-// condensed version of the above, w/o commentary
-// not exported b/c this is a copy of the above
-int binary_search_gt_condensed(vector<int>& a, int t) {
-        int l, r, m;
-        for (l = 0, r = a.size(); l != r; ) {
-                m = (l + r) >> 1;
-                if (a[l] < t) l = m+1;
-                else r = m;
-        }
-        return l;
+namespace {
+
+// Condensed version of the above, w/o commentary.
+// This isn't exported b/c this is a copy of the above.
+// This probably violates the Google style guide in too many ways.
+int BinarySearchGeCondensed(const std::vector<int> &a, int t) {
+  int l{0}, r(a.size()), m{};
+  while (l < r) {
+    m = (l + r) >> 1;
+    a[m] < t ? l = m + 1 : r = m;
+  }
+  return l;
 }
 
-// binary search for equality in terms of binary_search_gt (above)
-int binary_search(vector<int>& arr, int target) {
-        int i = binary_search_gt(arr, target);
-        return i == arr.size() || arr[i] != target ? -1 : i;
-}
- 
-// easy to understand binary search to find an element
-// equal to `target` in nums, or `-1` otherwise
-// (easy to understand because we don't have to worry as much about
-// relation (<, <=, >, >=) if simply checking for equality)
-int binary_search_simple(vector<int>& nums, int target) {
-        int l, r, m;
-        
-        for (l = 0, r = nums.size(); l < r; ) {
-                m = (l + r) / 2;
-            
-                if (nums[m] == target) {
-                        return m;
-                } else if (nums[m] > target) {
-                        r = m;
-                } else {
-                        l = m+1;
-                }
-        }
-        
-        return -1;
+} // namespace
+
+std::optional<int> BinarySearch(const std::vector<int> &arr, int target) {
+  auto i{BinarySearchGe(arr, target)};
+  return i == arr.size() || arr[i] != target ? std::nullopt : std::optional(i);
 }
 
-// find rotation of a rotated sorted array
-int find_rotation(vector<int>& nums) {
-        int l, r, m, len;
+namespace {
 
-        for (l = 0, r = len = nums.size(); l < r; ) {
-                m = (l + r) >> 1;
-                
-                if (nums[m] < nums[0]) {
-                        r = m;
-                } else {
-                        l = m+1;
-                }
-        }
+// This binary search is easier to understand without thinking
+// about invariants. We don't have to think as hard about < vs. <=
+// since we check for equality directly. However, this only checks
+// for equality and does not generalize to the insertion index.
+std::optional<int> BinarySearchSimple(const std::vector<int> &nums,
+                                      int target) {
+  auto l{0};
+  auto r{nums.size()};
+  while (l < r) {
+    auto m{(l + r) / 2};
 
-        return l % len;
+    if (nums[m] == target) {
+      return m;
+    } else if (nums[m] > target) {
+      r = m - 1;
+    } else {
+      l = m + 1;
+    }
+  }
+
+  // At this point, l == r.
+  if (l < nums.size() && nums[l] == target) {
+    return l;
+  }
+  return {};
 }
+
+} // namespace
+
+// Find rotation of a rotated sorted array
+int FindRotation(const std::vector<int> &nums) {
+  auto len{nums.size()};
+  auto l{0};
+  auto r{len};
+
+  while (l < r) {
+    auto m{(l + r) >> 1};
+
+    if (nums[m] < nums[0]) {
+      r = m;
+    } else {
+      l = m + 1;
+    }
+  }
+
+  return l % len;
+}
+
+} // namespace dsa::binary_search

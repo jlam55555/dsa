@@ -1,21 +1,30 @@
 #include "mst.hpp"
+
+#include <algorithm>
+#include <vector>
+
+#include "../graph/graph.hpp"
 #include "../union_find/union_find.hpp"
 
-// don't actually need a graph data structure, just need
-// a list of weighted edges
-int kruskal(::vector<graph::edge>& edges) {
-        // `g` only used for counting nodes; should replace this
-        graph g{edges};
-        union_find uf{g.size()};
-        int min_weight = 0;
+namespace dsa::mst {
 
-        sort(edges.begin(), edges.end());
+int Kruskal(std::vector<graph::Edge> &edges) {
+  // We don't actually need a graph data structure, we just need
+  // a list of weighted edges. `g` only used for counting nodes;
+  // we should replace this.
+  graph::Graph g{edges};
+  union_find::DisjointSet ds{g.Size()};
+  auto min_weight{0};
 
-        for (auto e : edges) {
-                if (uf.unio(e.from, e.to)) {
-                        min_weight += e.weight;
-                }
-        }
+  std::sort(edges.begin(), edges.end());
 
-        return min_weight;
+  for (auto &e : edges) {
+    if (ds.Union(e.from, e.to)) {
+      min_weight += e.weight;
+    }
+  }
+
+  return min_weight;
 }
+
+} // namespace dsa::mst

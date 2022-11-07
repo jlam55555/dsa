@@ -1,8 +1,14 @@
-#ifndef DSA_KADANE_HPP
-#define DSA_KADANE_HPP
+#ifndef DSA_KADANE_KADANE_HPP
+#define DSA_KADANE_KADANE_HPP
 
-#include "../utils/common.hpp"
+#include <vector>
 
-int max_subarray_sum(vector<int> &nums);
+namespace dsa::kadane {
 
-#endif
+// Compute the maximum (non-empty) subarray sum.
+// This is also called Kadane's algorithm.
+int MaxSubarraySum(const std::vector<int> &nums);
+
+} // namespace dsa::kadane
+
+#endif // DSA_KADANE_HPP

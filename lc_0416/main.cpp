@@ -1,28 +1,32 @@
-#include "../utils/common.hpp"
+#include <vector>
+
 #include "../knapsack/knapsack.hpp"
+#include "../utils/common.hpp"
 
-bool canPartition(vector<int>& nums) {
-        int sum = 0;
-        for (auto i : nums) {
-                sum += i;
-        }
+// This is basically the knapsack problem. We need to see
+// if we can find a subset of nums that sums to half of
+// the total sum.
+bool CanPartition(const std::vector<int> &nums) {
+  auto sum{0};
+  for (auto i : nums) {
+    sum += i;
+  }
 
-        if (sum % 2) {
-                return false;
-        }
+  if (sum % 2) {
+    return false;
+  }
 
-        // return subset_sum_knapsack(nums, sum>>1);
-        // return subset_sum_bitwise(nums, sum>>1);
-        return subset_sum_bitwise_opt(nums, sum>>1);
+  // return dsa::knapsack::SubsetSumKnapsack(nums, sum>>1);
+  // return dsa::knapsack::SubsetSumBitwise(nums, sum>>1);
+  return dsa::knapsack::SubsetSumBitwiseOpt(nums, sum >> 1);
 }
 
 int main(void) {
-        auto tc1 = vector<int>{1,5,11,5};
-        assert(canPartition(tc1) == true);
+  std::vector<int> tc1{1, 5, 11, 5};
+  assert(CanPartition(tc1));
 
-        auto tc2 = vector<int>{1,2,3,5};
-        assert(canPartition(tc2) == false);
+  std::vector<int> tc2{1, 2, 3, 5};
+  assert(!CanPartition(tc2));
 
-        cout << "Done." << endl;
-        return 0;
+  return 0;
 }

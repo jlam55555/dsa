@@ -1,13 +1,14 @@
 #include "knapsack.hpp"
 
+#include <vector>
+
+#include "../utils/common.hpp"
+
 int main(void) {
-        cout << "Hello, world!" << endl;
+  std::vector<int> values{60, 100, 120}, weights{10, 20, 30};
+  auto cost{50};
 
-        vector<int> values{60, 100, 120};
-        vector<int> weights{10, 20, 30};
-        int cost = 50;
+  assert_eq(dsa::knapsack::Knapsack01(values, weights, cost), 220);
 
-        cout << knapsack_01(values, weights, cost) << endl;
-        
-        return 0;
+  return 0;
 }

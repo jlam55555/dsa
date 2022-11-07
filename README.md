@@ -54,14 +54,11 @@ For well-known data structures or algorithms with a canonical name (e.g., `knaps
 
 If a LeetCode problem (or other numbered problem) contains a well-known data structure/algorithm, the package may be named with either the canonical data structure/algorithm name or the numbered LeetCode style, or the package may be split into two packages. For example, LeetCode #15 is the famous "three sum" problem -- it can be a package `three_sum`, `lc_0015`, or split into two packages. There is no set rule.
 
-The name style convention is `snake_case`.
-
 ##### Code style
 
-The code is automatically formatted using Emacs' C/C++ indenting using the `linux` style. To set this style in Emacs (the default style is `gnu`), use the following Elisp:
-```lisp
-(setq c-default-style "linux")
-```
+(New) code should follow the [Google C++ style guide][google-cstyle]. Code is auto-formatted using `clang-format`.
+
+Older code may not follow this convention but may be transitioned over in the future.
 
 ---
 
@@ -98,11 +95,12 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Maximum length of repeated subarray ([lc_0718](./lc_0718))
 - Binary tree ([tree](./tree))
   - Construct from inorder and postorder ([lc_0106](./lc_0106))
-- Graph
+- Graph ([graph](./graph))
+  - Dijkstra's algorithm ([graph/dijkstra.cpp](./graph/dijkstra.cpp))
   - MST ([mst](./mst))
-    - Kruskal's algorithm
-  - SCC
-    - Kosaraju's algorithm ([kosaraju](./kosaraju))
+    - Kruskal's algorithm ([mst/kruskal.cpp](./mst/kruskal.cpp))
+  - SCC ([scc](./scc))
+    - Kosaraju's algorithm ([scc/kosaraju.cpp](./scc/kosaraju.cpp))
   - Backtracking/DFS
     - Wildcard matching ([lc_0044](./lc_0044))
   - Topological sort/Kahn's algorithm ([lc_0210](./lc_0210))
@@ -130,3 +128,4 @@ Relevant packages are listed in parentheses. (This list may not be completely up
     - `starts_with`, `string_split` ([utils/string](./utils/string.hpp))
 
 [makefile]: ./Makefile
+[google-cstyle]: https://google.github.io/styleguide/cppguide.html

@@ -1,13 +1,16 @@
-// see: https://www.geeksforgeeks.org/count-set-bits-in-an-integer/
+#include "set_bits.hpp"
 
-// Kernighan's method
-int count_set_bits(int n) {
-        int count = 0;
-        
-        while (n) {
-                n &= n-1;
-                ++count;
-        }
+namespace dsa::set_bits {
 
-        return count;
+unsigned CountSetBits(unsigned n) {
+  unsigned count{0};
+
+  while (n) {
+    n &= n - 1;
+    ++count;
+  }
+
+  return count;
 }
+
+} // namespace dsa::set_bits

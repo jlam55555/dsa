@@ -1,16 +1,21 @@
 #ifndef DSA_POWER_SET_HPP
 #define DSA_POWER_SET_HPP
 
-#include "../utils/common.hpp"
+#include <vector>
 
-typedef vector<int> vi;
-typedef vector<vi> vvi;
+namespace dsa::power_set {
 
-// get power set of nums, which contains unique elements
-vvi subsets(vi& nums);
+// Get power set of nums, which we assume contains unique elements.
+//
+// Leetcode 78: Subsets I
+std::vector<std::vector<int>> Subsets(const std::vector<int> &nums);
 
-// get power set of nums, which may contain duplicates
-// but don't return any duplicate elements
-vvi subsets_dup(vi& nums);
+// Get power set of nums, which may contain duplicates
+// but don't return any duplicate elements. Sorts nums.
+//
+// Leetcode 90: Subsets II
+std::vector<std::vector<int>> SubsetsDup(std::vector<int> &nums);
 
-#endif
+} // namespace dsa::power_set
+
+#endif // DSA_POWER_SET_HPP

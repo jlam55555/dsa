@@ -1,6 +1,12 @@
-#ifndef DSA_SET_BITS_HPP
-#define DSA_SET_BITS_HPP
+#ifndef DSA_SET_BITS_SET_BITS_HPP
+#define DSA_SET_BITS_SET_BITS_HPP
 
-int count_set_bits(int n);
+namespace dsa::set_bits {
 
-#endif
+// Count the number of set bits in a word.
+// A.k.a. Kernighan's algorithm.
+unsigned CountSetBits(unsigned n);
+
+} // namespace dsa::set_bits
+
+#endif // DSA_SET_BITS_SET_BITS_HPP

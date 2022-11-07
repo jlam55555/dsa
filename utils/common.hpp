@@ -1,36 +1,42 @@
-// general makefile for all files
-#ifndef DSA_COMMON_HPP
-#define DSA_COMMON_HPP
+// Useful boilerplate.
+#ifndef DSA_UTILS_COMMON_HPP
+#define DSA_UTILS_COMMON_HPP
 
-#include <algorithm>
-#include <bitset>
+// Leetcode does (something like) this, but this violates
+// the Google C++ style guide.
+// https://google.github.io/styleguide/cppguide.html#Include_What_You_Use
+// #include <algorithm>
+// #include <bitset>
+// #include <climits>
+// #include <cmath>
+// #include <cstring>
+// #include <iostream>
+// #include <list>
+// #include <map>
+// #include <queue>
+// #include <set>
+// #include <stack>
+// #include <unordered_map>
+// #include <unordered_set>
+// #include <vector>
+
+// Leetcode does this, but this violates the Google
+// C++ style guide.
+// https://google.github.io/styleguide/cppguide.html#Namespaces
+// using namespace std;
+
 #include <cassert>
-#include <climits>
-#include <cmath>
-#include <cstring>
-#include <iostream>
-#include <list>
-#include <map>
-#include <queue>
-#include <set>
-#include <stack>
-#include <unordered_map>
-#include <unordered_set>
-#include <vector>
 
-using namespace std;
+// Useful for assertions. This can be defined using templates, but then
+// the `assert()` macro would not print a useful error message.
+// (It will print "assertion failed: a == b" rather than the true values
+// of `a` and `b`.)
+#define assert_eq(a, b) assert((a) == (b))
 
-typedef vector<int> vi;
-typedef vector<vi> vvi;
-typedef vector<char> vc;
-typedef vector<vc> vvc;
+// Check that the C++ version is >= C++17. This matches the
+// current Google style guide target version.
+// `static_assert()` isn't standardized before C++11, but that's
+// okay because we're checking C++ version anyways.
+static_assert(__cplusplus >= 201703L, "Must be at least C++17");
 
-// to put at the end of test cases
-#define DONE\
-        cout << "Done." << endl;\
-        return 0;
-
-// why is this not standard
-#define assert_eq(a, b) (a==b)
-
-#endif
+#endif // DSA_UTILS_COMMON_HPP

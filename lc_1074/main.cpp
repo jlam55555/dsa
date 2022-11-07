@@ -1,47 +1,45 @@
+#include <unordered_map>
+#include <vector>
+
 #include "../utils/common.hpp"
 
-int numSubmatrixSumTarget(vector<vector<int>>& matrix, int target) {
-        int m = matrix.size(), n = matrix[0].size();
-        
-        // calculate row cumsums
-        for (int i = 0; i < m; ++i) {
-                for (int j = 1; j < n; ++j) {
-                        matrix[i][j] += matrix[i][j-1];
-                }
-        }
-        
-        // loop over ranges in one dimension
-        int res = 0;
-        for (int i = 0; i < n; ++i) {
-                for (int j = i; j < n; ++j) {
-                
-                        // consider the "column" that is the sum of
-                        // all columns in range [i,j]
-                        // now find all target sums
-                        unordered_map<int,int> seen{{0, 1}};
-                        int curSum = 0;
-                        for (int k = 0; k < m; ++k) {
-                                curSum += matrix[k][j] - (i ? matrix[k][i-1] : 0);
-                                res += seen[curSum-target];
-                                ++seen[curSum];
-                        }
-                
-                }
-        }
-        
-        return res;
+int NumSubmatrixSumTarget(std::vector<std::vector<int>> &matrix, int target) {
+  const auto m{matrix.size()}, n{matrix[0].size()};
+
+  // Calculate row cumsums.
+  for (auto i{0}; i < m; ++i) {
+    for (auto j{1}; j < n; ++j) {
+      matrix[i][j] += matrix[i][j - 1];
+    }
+  }
+
+  // Loop over ranges in one dimension.
+  auto res{0};
+  for (auto i{0}; i < n; ++i) {
+    for (auto j{i}; j < n; ++j) {
+
+      // Consider the "column" that is the sum of
+      // all columns in range [i,j].
+      // Now find all target sums.
+      std::unordered_map<int, int> seen{{0, 1}};
+      for (auto k{0}, cur_sum{0}; k < m; ++k) {
+        cur_sum += matrix[k][j] - (i ? matrix[k][i - 1] : 0);
+        res += seen[cur_sum - target];
+        ++seen[cur_sum];
+      }
+    }
+  }
+
+  return res;
 }
 
 int main() {
-        vector<vector<int>>
-                v1{{0,1,0},{1,1,1},{0,1,0}},
-                v2{{1,-1},{-1,1}},
-                v3{{904}};
+  std::vector<std::vector<int>> v1{{0, 1, 0}, {1, 1, 1}, {0, 1, 0}},
+      v2{{1, -1}, {-1, 1}}, v3{{904}};
 
-        assert(numSubmatrixSumTarget(v1, 0) == 4);
-        assert(numSubmatrixSumTarget(v2, 0) == 5);
-        assert(numSubmatrixSumTarget(v3, 0) == 0);
+  assert_eq(NumSubmatrixSumTarget(v1, 0), 4);
+  assert_eq(NumSubmatrixSumTarget(v2, 0), 5);
+  assert_eq(NumSubmatrixSumTarget(v3, 0), 0);
 
-        cout << "Done." << endl;
-        return 0;
+  return 0;
 }
