@@ -119,6 +119,8 @@ Relevant packages are listed in parentheses. (This list may not be completely up
   - Count set bits ([lc_0762](./lc_0762), [lc_1239](./lc_1239))
     - Kernighan's algorithm
   - Counting bit permutations (general bitset usage/bit manip) ([lc_1461](./lc_1461))
+- Trie
+  - Word Search II ([lc_0212](./lc_0212))
 - Misc.
   - Three sum ([three_sum](./three_sum))
   - Maximum subarray sum ([kadane](./kadane))
